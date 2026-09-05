@@ -1,24 +1,4 @@
 import { Link } from "react-router-dom";
-/*const CountryCard = ({country}) => {
-  return(
-    <div className="card w-86 bg-base-100 shadow-xl hover:shadow-2xl">
-      <figure>
-        <img 
-         
-            src={country.flag.url_svg || null}
-            alt={country.names.common}
-            className="h-44 w-full object-cover"
-
-  
-        />
-      </figure>
-    </div>
-  )
-};
-
-
-export default CountryCard;
-*/
 
  const CountryCard = ({ country }) => {
   const flagUrl =

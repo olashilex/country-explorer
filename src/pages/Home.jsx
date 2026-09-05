@@ -35,6 +35,15 @@ const Home = () => {
     fetchCountries();
   }, []);
 
+      const filteredCountries = countries.filter((country) => {
+      return (
+        country.names.common
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) &&
+        (region ? country.region === region : true)
+      );
+    });
+
   return (
     <div className="container mx-auto p-4">
       <div className="flex flex-col justify-between gap-4 mb-6">
@@ -50,7 +59,7 @@ const Home = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-6">
-        {countries.map((country) => (
+        { filteredCountries.map((country) => (
           <CountryCard
             key={country.codes?.alpha_2 || country.names.common}
             country={country}
