@@ -19,7 +19,9 @@ function CountryDetails() {
     const fetchCountry = async () => {
       try {
      const requests = [0, 100, 200].map((offset) =>
-      axios.get(`/api/countries/v5?limit=100&offset=${offset}`, {
+      axios.get(
+  `https://api.restcountries.com/countries/v5?limit=100&offset=${offset}`,
+  {
         headers: {
           Authorization: "Bearer rc_live_321b16461aaa4eaaad443c65aa2625b6",
         },
