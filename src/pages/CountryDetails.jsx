@@ -6,8 +6,14 @@ function CountryDetails() {
   const { name } = useParams();
 
   const [country, setCountry] = useState(null);
+   const currency = country?.currencies ? Object.entries(country.currencies)[0] : null;
+   const language = country?.languages ? Object.entries(country.languages )[0] : null;
+
+
+
 
   console.log(country);
+  
 
   useEffect(() => {
     const fetchCountry = async () => {
@@ -62,6 +68,7 @@ setCountry(selectedCountry);
       >
         ← Back to Home
       </Link>
+       <div className="flex flex-col md:flex-row gap-10 items-center">
 
       {flagUrl ? (
         <img
@@ -74,12 +81,54 @@ setCountry(selectedCountry);
           <span>No flag available</span>
         </div>
       )}
+      <div>
 
-      <h1 className="text-3xl font-bold mt-6">
+      <h1 className="text-4xl font-bold mb-4">
         {country.names.common}
       </h1>
+      <div className="space-y-2">
+           <p>
+            <strong>Official Name:</strong> {country.names.official}
+          </p>
+
+          <p>
+            <strong>Population:</strong> {country.population.toLocaleString()}
+          </p>
+
+          <p>
+            <strong>Region:</strong> {country.region}
+          </p>
+
+          <p>
+            <strong>Subregion:</strong> {country.subregion}
+          </p>
+
+          <p>
+            <strong>Capital:</strong> {country.capitals?.map(capital => capital.name).join(", ")}
+          </p>
+          <p>
+           <strong>Languages:</strong>{" "}
+          {language
+            ? `${language[1].name}`
+            : "No data available"}
+         
+          </p>
+
+          <p>
+            
+            <strong>Currency:</strong>{" "}
+          {currency
+            ? `${currency[1].name} (${currency[1].symbol || ""})`
+            : "No data available"}
+
+          </p>
+              
+      </div>
+      
+      </div>
       
 
+    </div>
     </div>
   );
 }

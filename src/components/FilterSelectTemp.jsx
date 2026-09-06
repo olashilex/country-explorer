@@ -1,7 +1,7 @@
 
 const FilterSelect = ({region, setRegion}) => {
 
-  const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
 
   return(

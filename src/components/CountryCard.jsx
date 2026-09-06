@@ -7,6 +7,16 @@ import { Link } from "react-router-dom";
     country.flag.url_jpg;
 
   const currency = Object.entries(country.currencies || {})[0];
+  
+
+  /*const handleClick = () => {
+    sessionStorage.setItem("homeScroll", String(window.scrollY || 0));
+    sessionStorage.setItem("homePath", location.pathname);
+  }
+    */
+   const handleClick = () => {
+  sessionStorage.setItem("homeScroll", String(window.scrollY));
+};
 
   return (
     <div className="card w-86 bg-base-100 shadow-xl hover:shadow-2xl">
@@ -16,7 +26,7 @@ import { Link } from "react-router-dom";
           <img
             src={flagUrl}
             alt={country.names.common}
-            className="h-44 w-full object-cover"
+            className="h-44 w-full object-contain"
           />
         ) : (
           <div className="h-44 w-full flex items-center justify-center bg-base-200">
@@ -51,7 +61,7 @@ import { Link } from "react-router-dom";
         </p>
         <div className="card-actions justify-end">
           <Link to={`/country/${country.names.common}`}>
-           <button className="btn btn-primary btn-sm">View Details</button>
+           <button onClick={handleClick} className="btn btn-primary btn-sm">View Details</button>
           </Link>
         </div>
 

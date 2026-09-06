@@ -6,8 +6,42 @@ import CountryCard from "../components/CountryCard";
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [region, setRegion] = useState("");
+  const [searchTerm, setSearchTerm] = useState(localStorage.getItem("searchTerm") || "");
+  const [region, setRegion] = useState(localStorage.getItem("region") || "");
+
+  
+   /*useEffect(() => {
+    const saved = sessionStorage.getItem("homeScroll");
+    if (saved !== null) {
+      const scrollY = parseInt(saved, 10) || 0;
+      const timeout = setTimeout(()=> {
+        window.scrollTo({ top: scrollY, behavior: "smooth "});
+        sessionStorage.removeItem("homeScroll");
+        sessionStorage.removeItem("homePath");
+
+      }, 50);
+      return () => clearTimeout(timeout);
+     
+    }
+    
+  }, [countries.length]);
+  */
+ useEffect(() => {
+  const saved = sessionStorage.getItem("homeScroll");
+
+  if (saved !== null && countries.length > 0) {
+    const scrollY = parseInt(saved, 10) || 0;
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: scrollY,
+        behavior: "auto",
+      });
+
+      sessionStorage.removeItem("homeScroll");
+    }, 100);
+  }
+}, [countries.length]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -34,6 +68,16 @@ const Home = () => {
 
     fetchCountries();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("region", region);
+    localStorage.setItem("searchTerm", searchTerm);
+
+  }, [searchTerm, region]);
+  
+
+
+  
 
       const filteredCountries = countries.filter((country) => {
       return (
