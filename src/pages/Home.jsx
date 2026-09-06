@@ -10,22 +10,6 @@ const Home = () => {
   const [region, setRegion] = useState(localStorage.getItem("region") || "");
 
   
-   /*useEffect(() => {
-    const saved = sessionStorage.getItem("homeScroll");
-    if (saved !== null) {
-      const scrollY = parseInt(saved, 10) || 0;
-      const timeout = setTimeout(()=> {
-        window.scrollTo({ top: scrollY, behavior: "smooth "});
-        sessionStorage.removeItem("homeScroll");
-        sessionStorage.removeItem("homePath");
-
-      }, 50);
-      return () => clearTimeout(timeout);
-     
-    }
-    
-  }, [countries.length]);
-  */
  useEffect(() => {
   const saved = sessionStorage.getItem("homeScroll");
 

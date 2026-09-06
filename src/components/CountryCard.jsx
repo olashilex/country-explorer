@@ -9,11 +9,7 @@ import { Link } from "react-router-dom";
   const currency = Object.entries(country.currencies || {})[0];
   
 
-  /*const handleClick = () => {
-    sessionStorage.setItem("homeScroll", String(window.scrollY || 0));
-    sessionStorage.setItem("homePath", location.pathname);
-  }
-    */
+  
    const handleClick = () => {
   sessionStorage.setItem("homeScroll", String(window.scrollY));
 };
